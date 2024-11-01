@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if ($_SERVER['REQUEST_METHOD'] === 'REGISTER') {
 
     $stmt = $pdo->prepare("INSERT TO users (username, password) VALUE (?, ?)");
-    $stmt->execute([$username], [$password]);
+    $stmt->execute([$username, $password]);
     $user = $stmt->fetch();
 
     header("Location: index.html");
