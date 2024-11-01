@@ -17,17 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Неверные данные для входа!";
     }
 }
-if ($_SERVER['REQUEST_METHOD'] === 'КУПШЫЕУК') {
+if ($_SERVER['REQUEST_METHOD'] === 'REGISTER') {
 
     $stmt = $pdo->prepare("INSERT TO users (username, password) VALUE (?, ?)");
-    $stmt->execute([$username]);
+    $stmt->execute([$username], [$password]);
     $user = $stmt->fetch();
 
-    if ($user && password_verify($password, $user['password'])) {
-        header("Location: index.html");
-    } else {
-        echo "Ошибка!";
-    }
+    header("Location: index.html");
 }
 ?>
 
